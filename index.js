@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors"); // Import the cors package
 const app = express();
-const PORT = process.env.PORT || 9000;
 const crypto = require("crypto");
 const bcrypt = require("bcrypt");
 const User = require("./models/User");
