@@ -19,8 +19,6 @@ mongoose.connect(uri, {
 }).catch(err => {
     console.log('Couldn\'t connect to DB');
 });
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 // Generate a random secret key
 const secretKey = 'kjbnasdkfjnskjanfkjnafkjnsakfjnkajsdnfkjnasdkjfnkla'
@@ -38,7 +36,7 @@ app.use(
 
 
 app.get("/", (req, res) => {
-    res.json("Express on Vercel");
+    res.send("Express on Vercel");
 });
 
 
@@ -53,8 +51,6 @@ app.post("/register", async (req, res) => {
             username: email,
         });
         await newUser.save();
-        // If registration is successful
-        // res.status(201).json({ success: true, message: "success" });
         return res.status(201).json({ message: "User registered successfully" });
     } catch (error) {
         return res.status(500).json({ error: "An error occurred" });
@@ -64,7 +60,6 @@ app.post("/register", async (req, res) => {
 
 app.post("/login", async (req, res) => {
     const { email, password } = req.body;
-
     try {
         const user = await User.findOne({ email });
         if (!user) {
