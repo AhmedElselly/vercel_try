@@ -7,24 +7,6 @@ const bcrypt = require("bcrypt");
 const User = require("./models/User");
 const jwt = require("jsonwebtoken");
 
-const uri =
-    "mongodb+srv://admin:yT0GLc05LNI1ohDi@userdb.udxsivq.mongodb.net/?retryWrites=true&w=majority";
-
-const mongoose = require("mongoose");
-mongoose.connect(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-}).then(() => {
-    console.log('Connected to DB')
-}).catch(err => {
-    console.log('Couldn\'t connect to DB');
-});
-
-// Generate a random secret key
-const secretKey = 'kjbnasdkfjnskjanfkjnafkjnsakfjnkajsdnfkjnasdkjfnkla'
-
-const allowedOrigins = ["https://mohammedhelal591.github.io/my-movies-app/"];
-
 // Middleware
 app.use(express.json());
 // Use the cors middleware
