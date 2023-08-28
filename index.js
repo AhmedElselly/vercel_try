@@ -23,7 +23,7 @@ const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 // Generate a random secret key
-const secretKey = crypto.randomBytes(32).toString("hex");
+const secretKey = 'kjbnasdkfjnskjanfkjnafkjnsakfjnkajsdnfkjnasdkjfnkla'
 
 const allowedOrigins = ["https://mohammedhelal591.github.io/my-movies-app/"];
 
@@ -71,7 +71,7 @@ app.post("/login", async (req, res) => {
             return res.status(401).json({ error: "User not found" });
         }
 
-        const passwordMatch = await bcrypt.compare(password, user.password);
+        const passwordMatch = bcrypt.compareSync(password, user.password);
         if (!passwordMatch) {
             return res.status(401).json({ error: "Invalid credentials" });
         }
