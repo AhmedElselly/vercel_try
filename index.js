@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors"); // Import the cors package
 const app = express();
 // const bcrypt = require("bcrypt");
-const User = require("./models/User");
+// const User = require("./models/User");
 // const jwt = require("jsonwebtoken");
 
 // Middleware
